@@ -31,7 +31,10 @@ import { filter24hrTicker } from "../../services/data.js"
 
 <template>
   <div class="header">
-    <Button v-for="button in buttonData" :text="button.text" :handler="button.handler" ></Button>
+    <div>
+      <Button v-for="button in buttonData" :text="button.text" :handler="button.handler" ></Button>
+    </div>
+    <h1>Emircan</h1>
   </div>
 </template>
 
@@ -40,6 +43,7 @@ import { filter24hrTicker } from "../../services/data.js"
     width: 100%;
     height: 100px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 

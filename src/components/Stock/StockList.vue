@@ -20,7 +20,7 @@
       <StockItem v-for="stock in this.$store.state.selectedStock" :stock="stock" ></StockItem>
     </template>
     <template v-else>
-      <h1>Stock List Empty</h1>
+      <h1 class="stockList__empty">Stock List Empty</h1>
     </template>
   </div>
 
@@ -30,6 +30,14 @@
   .stockList {
     width: 90%;
     height: 100%;
+
+    &__empty{
+      color: #5293ee;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
   }
 
 </style>

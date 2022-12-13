@@ -14,10 +14,7 @@ export default new Vuex.Store({
       return state.selectedStock?.map((item) => item.symbol) || ["No Stock Selected"]
     },
     getStocksCount(state){
-      return state.selectedStock?.map((item) => item.count) || [100]
-    },
-    getStockQuantity(state){
-      return state.quantity
+      return state.selectedStock?.map((item) => item.quantity) || [100]
     },
   },
   mutations: {
@@ -25,12 +22,19 @@ export default new Vuex.Store({
       state.isModalActive = !state.isModalActive
     },
     selectedStock(state,stock){
-      const customStock = {...stock}
+      const customStock = {...stock, quantity: state.quantity}
       state.selectedStock.push(customStock)
     },
     setStockQuantity(state,quantity){
       state.quantity = quantity
     },
+    updateStockQuantity(state,updatedStock){
+      const findStock = state.selectedStock.find((item) => item.symbol === updatedStock.stock.symbol)
+      findStock.quantity = updatedStock.quantity
+    },
+    removeStock(state,stock){
+      state.selectedStock = state.selectedStock.filter((item) => item.symbol !== stock.symbol)
+    }
   },
   actions: {
     addStock({commit},stock){
@@ -39,6 +43,7 @@ export default new Vuex.Store({
     quantityChange({commit},quantity){
       commit("setStockQuantity",quantity)
     },
+
   },
   modules: {
   }

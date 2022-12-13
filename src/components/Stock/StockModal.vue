@@ -44,7 +44,7 @@ export default{
         <input v-model="searchInput" @change="searchStock"  type="text" placeholder="Search">
       </div>
       <div class="modal__content--stock" >
-        <StockNew v-for="stock in searchedStock" :stock="stock" ></StockNew>
+        <StockNew v-for="(stock,index) in searchedStock" :key="index" :stock="stock" ></StockNew>
       </div>
     </div>
   </div>

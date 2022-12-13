@@ -23,6 +23,7 @@ export default{
 
 <template>
   <div class="main">
+    <span class="main__title">eQuota Challenge</span>
     <div class="main__header">
       <Header></Header>
     </div>
@@ -55,10 +56,17 @@ export default{
     align-items: center;
     background-color: #121212;
 
+    &__title{
+      color: #5293ee;
+      margin-top: 1rem;
+      letter-spacing: 2px;
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
     &__header{
       width: 90%;
       height: 100px;
-      margin-top: 2rem;
       display: flex;
       align-items: center;
       justify-content: center;

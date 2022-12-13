@@ -1,5 +1,5 @@
 <script>
-  import { mapGetters } from "vuex";
+import { mapGetters } from "vuex";
 import Button from "../Shared/Button.vue"
   export default{
     components:{
@@ -11,15 +11,25 @@ import Button from "../Shared/Button.vue"
         required : false
       }
     },
+    data() {
+      return {
+        quantity : 1
+      }
+    },
     methods: {
       addStock() {
         this.$store.dispatch("addStock", this.stock);
       }
     },
     computed : {
-      ...mapGetters({
-        quantity : "getStockQuantity"
-      })
+      stockQuantity : {
+        get(){
+          return this.quantity
+        },
+        set(value){
+          this.$store.dispatch("quantityChange", value)
+        }
+      }
     }
   }
 
@@ -31,7 +41,7 @@ import Button from "../Shared/Button.vue"
       <span>{{stock.symbol}} - {{stock.lastPrice}}</span>
     </div>
     <div class="stock__count">
-      <input type="number" placeholder="0" v-model="quantity">
+      <input type="number" placeholder="0" v-model="stockQuantity">
     </div>
     <div class="stock__button">
       <Button text="Add" size="10px 40px" :handler="addStock" ></Button>

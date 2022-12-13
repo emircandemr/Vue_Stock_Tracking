@@ -9,6 +9,14 @@
        type : Object,
        required : false
      }
+    },
+    methods : {
+      updateStock(e){
+        this.$store.commit("updateStockQuantity", {stock : this.stock, quantity : e.target.value})
+      },
+      removeStock(){
+        this.$store.commit("removeStock", this.stock)
+      }
     }
   }
 </script>
@@ -20,11 +28,11 @@
       <span>{{stock.lastPrice}} - {{stock.weightedAvgPrice}}</span>
     </div>
     <div class="stock__count">
-      <input type="number" placeholder="0">
+      <input type="number" placeholder="0" :value="stock.quantity" @input="updateStock" >
     </div>
     <div class="stock__button">
-      <Button text="Update" size="10px 12px"></Button>
-      <Button text="Remove"  size="10px 12px"></Button>
+      <Button text="Update"  size="10px 12px"></Button>
+      <Button text="Remove" :handler="removeStock" size="10px 12px"></Button>
     </div>
   </div>
 </template>
