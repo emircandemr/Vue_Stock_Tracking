@@ -28,7 +28,7 @@
       <span>{{stock.lastPrice}} - {{stock.weightedAvgPrice}}</span>
     </div>
     <div class="stock__count">
-      <input type="number" placeholder="0" :value="stock.quantity" @input="updateStock" >
+      <input type="number" :value="stock.quantity" @input="updateStock" >
     </div>
     <div class="stock__button">
       <Button text="Update"  size="10px 12px"></Button>

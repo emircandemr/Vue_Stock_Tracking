@@ -20,12 +20,9 @@ import { filter24hrTicker } from "../../services/data.js"
     },
     methods:{
       modalChange(){
-        filter24hrTicker("ET")
         this.$store.commit('modalChangeStatu')
       }
     }
-
-
   }
 </script>
 

@@ -1,11 +1,13 @@
 <script>
 import { filter24hrTicker } from '@/services/data';
-import StockItem from './StockItem.vue';
+import { mapGetters } from 'vuex';
 import StockNew from './StockNew.vue';
+import StockSearched from './StockSearched.vue';
 
 export default{
   components:{
-    StockNew
+    StockNew,
+    StockSearched
 },
   data(){
     return{
@@ -20,13 +22,23 @@ export default{
     async searchStock(){
       const result = await filter24hrTicker(this.searchInput)
       .then(res => {
-        this.searchedStock = res
-        console.log(res)
+        this.searchedStock = res.map( stock => {
+          return {
+            ...stock ,
+            isAdded : this.isStockAvailable.includes(stock.symbol)
+          }
+        })
+        console.log(this.searchedStock)
       })
       // this.searchedStock = this.$store.state.stockList.filter(stock => stock.name.includes(this.searchInput))
     }
-  }
-
+  },
+  computed:{
+      ...mapGetters(['getSelectedStock']),
+      isStockAvailable(){
+        return this.getSelectedStock.map(stock => stock.symbol)
+      }
+    }
 }
 
 </script>
@@ -41,10 +53,11 @@ export default{
         </span>
       </div>
       <div class="modal__content--search" >
-        <input v-model="searchInput" @change="searchStock"  type="text" placeholder="Search">
+        <input v-model="searchInput" @input="searchStock"  type="text" placeholder="Search">
       </div>
       <div class="modal__content--stock" >
-        <StockNew v-for="(stock,index) in searchedStock" :key="index" :stock="stock" ></StockNew>
+        <!-- <StockNew v-for="(stock,index) in searchedStock" :key="index" :stock="stock" ></StockNew> -->
+        <StockSearched v-for="(stock,index) in searchedStock" :key="index" :stock="stock" ></StockSearched>
       </div>
     </div>
   </div>

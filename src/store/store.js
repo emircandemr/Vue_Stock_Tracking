@@ -7,7 +7,6 @@ export default new Vuex.Store({
   state: {
     isModalActive : false,
     selectedStock : [],
-    quantity : 1,
   },
   getters: {
     getStocksSymbol(state){
@@ -16,14 +15,16 @@ export default new Vuex.Store({
     getStocksCount(state){
       return state.selectedStock?.map((item) => item.quantity) || [100]
     },
+    getSelectedStock(state){
+      return state.selectedStock
+    },
   },
   mutations: {
     modalChangeStatu(state){
       state.isModalActive = !state.isModalActive
     },
-    selectedStock(state,stock){
-      const customStock = {...stock, quantity: state.quantity}
-      state.selectedStock.push(customStock)
+    selectedStock(state,customStock){
+      state.selectedStock.push({...customStock.stock, quantity:customStock.quantity })
     },
     setStockQuantity(state,quantity){
       state.quantity = quantity
@@ -43,6 +44,7 @@ export default new Vuex.Store({
     quantityChange({commit},quantity){
       commit("setStockQuantity",quantity)
     },
+
 
   },
   modules: {

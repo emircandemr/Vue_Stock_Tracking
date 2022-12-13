@@ -11,26 +11,16 @@ import Button from "../Shared/Button.vue"
         required : false
       }
     },
-    data() {
+    data(){
       return {
         quantity : 1
       }
     },
     methods: {
       addStock() {
-        this.$store.dispatch("addStock", this.stock);
-      }
+        this.$store.dispatch("addStock", {stock : this.stock , quantity : this.quantity});
+      },
     },
-    computed : {
-      stockQuantity : {
-        get(){
-          return this.quantity
-        },
-        set(value){
-          this.$store.dispatch("quantityChange", value)
-        }
-      }
-    }
   }
 
 </script>
@@ -41,7 +31,7 @@ import Button from "../Shared/Button.vue"
       <span>{{stock.symbol}} - {{stock.lastPrice}}</span>
     </div>
     <div class="stock__count">
-      <input type="number" placeholder="0" v-model="stockQuantity">
+      <input type="number" v-model="quantity" >
     </div>
     <div class="stock__button">
       <Button text="Add" size="10px 40px" :handler="addStock" ></Button>
