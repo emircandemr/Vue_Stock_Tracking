@@ -7,32 +7,36 @@
       },
       handler : {
         type : Function,
-        required : false
-      },
-      style : {
-        type : Object,
         required : false,
-        default : {
-          backgroundColor : "#4CAF50",
-          border : "none",
-          color : "white",
-          padding : "15px 32px",
-          textAlign : "center",
-          textDecoration : "none",
-          display : "inline-block",
-          fontSize : "16px",
-          margin : "4px 2px",
-          cursor : "pointer"
-        }
+        default : () => {}
+      },
+      backgroundColor : {
+        type : String,
+        required : false,
+        default : "#18191A"
+      },
+      size : {
+        type : String,
+        required : false,
+        default : "15px 32px"
       }
+
     },
   }
 </script>
 
 <template>
-    <button @click="handler" :style="style" >{{text}}</button>
+    <button class="btn" type="button" @click="handler" :style='{"backgroundColor" : backgroundColor , "padding" : size}'> {{text}} </button>
 </template>
 
 
 <style lang="scss" scoped>
+  .btn{
+    border: 1px solid #212121;
+    border-radius: 0.8rem;
+    color: white;
+    margin-right: 1rem;
+    text-align: center;
+    cursor: pointer;
+  }
 </style>

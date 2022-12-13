@@ -1,6 +1,6 @@
 <script>
-  import Button from "../Shared/Button.vue"
-
+import Button from "../Shared/Button.vue"
+import { filter24hrTicker } from "../../services/data.js"
   export default {
     components :{
       Button
@@ -10,21 +10,28 @@
         buttonData : [
           {
             text : "Add Stock",
-            handler : "addStock",
+            handler : this.modalChange
           },
           {
             text : "Refresh"
           }
         ]
       }
+    },
+    methods:{
+      modalChange(){
+        filter24hrTicker("ET")
+        this.$store.commit('modalChangeStatu')
+      }
     }
+
 
   }
 </script>
 
 <template>
   <div class="header">
-    <Button v-for="button in buttonData" :text="button.text" :handler="button.handler"></Button>
+    <Button v-for="button in buttonData" :text="button.text" :handler="button.handler" ></Button>
   </div>
 </template>
 
