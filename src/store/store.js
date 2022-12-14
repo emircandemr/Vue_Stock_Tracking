@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import {refresh24hrTicker} from '../services/data'
 
 Vue.use(Vuex)
 
@@ -7,7 +8,7 @@ export default new Vuex.Store({
   state: {
     isModalActive : false,
     selectedStock : [],
-    isLoading : true,
+    isLoading : false,
   },
   getters: {
     getStocksSymbol(state){
@@ -24,8 +25,8 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    loadingChangeStatu(state){
-      state.isLoading = !state.isLoading
+    loadingChangeStatu(state,statu){
+      state.isLoading = statu
     },
     modalChangeStatu(state){
       state.isModalActive = !state.isModalActive
@@ -51,8 +52,14 @@ export default new Vuex.Store({
     quantityChange({commit},quantity){
       commit("setStockQuantity",quantity)
     },
-
-
+    refreshStock({commit,state}){
+      commit("loadingChangeStatu",true)
+      state.selectedStock.forEach( async (item) => {
+        const refreshedStock = await refresh24hrTicker(item.symbol)
+        commit("updateStockQuantity",{stock:refreshedStock[0],quantity:item.quantity})
+        commit("loadingChangeStatu",false)
+      })
+    }
   },
   modules: {
   }

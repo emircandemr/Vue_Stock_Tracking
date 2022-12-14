@@ -20,7 +20,7 @@ export default{
   methods: {
     closeModal(){
       this.$store.commit('modalChangeStatu')
-      this.$store.commit('loadingChangeStatu')
+      this.$store.commit('loadingChangeStatu',false)
     },
     async searchStock(){
       const result = await filter24hrTicker(this.searchInput)
@@ -32,7 +32,7 @@ export default{
             quantity : this.getQuantity[this.getSelectedStockSymbol.indexOf(stock.symbol)]
           }
         })
-        this.$store.commit('loadingChangeStatu')
+        this.$store.commit('loadingChangeStatu',false)
       })
       console.log(this.searchedStock)
       // this.searchedStock = this.$store.state.stockList.filter(stock => stock.name.includes(this.searchInput))
@@ -63,7 +63,7 @@ export default{
           </span>
         </div>
         <div class="modal__content--search" >
-          <input v-model="searchInput" @input="searchStock"  type="text" placeholder="Search">
+          <input v-model="searchInput" @input="searchStock"  type="text" placeholder="Search Coins..">
         </div>
         <div v-if="this.getLoadingStatu" class="modal__content--loading">
           <Loading></Loading>

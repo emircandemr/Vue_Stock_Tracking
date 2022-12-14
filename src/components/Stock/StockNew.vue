@@ -21,6 +21,11 @@ import Button from "../Shared/Button.vue"
         this.$store.dispatch("addStock", {stock : this.stock , quantity : this.quantity});
       },
     },
+    computed:{
+      isAdded(){
+        return this.$store.state.selectedStock.map(stock => stock.symbol).includes(this.stock.symbol)
+      }
+    }
   }
 
 </script>
@@ -34,7 +39,7 @@ import Button from "../Shared/Button.vue"
       <input type="number" v-model="quantity" >
     </div>
     <div class="stock__button">
-      <Button text="Add" size="10px 40px" :handler="addStock" ></Button>
+      <Button text="Add" size="10px 40px" :handler="addStock" :clickable="!isAdded" ></Button>
     </div>
   </div>
 </template>
@@ -73,29 +78,27 @@ import Button from "../Shared/Button.vue"
     }
 
     &__count{
-      width: 100px;
+      width: 60px;
       height: 25px;
-      display: flex;
-      align-items: center;
       margin-right: 2rem;
       input{
         width: 100%;
         height: 100%;
-        padding: 0 5px;
         border-radius: 8px;
         border: none;
         outline: none;
         font-weight: 800;
+        padding: 0 5px;
         color: #000;
       }
 
     }
 
     &__button{
-      height: 100%;
+      width: 150px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
     }
 
   }

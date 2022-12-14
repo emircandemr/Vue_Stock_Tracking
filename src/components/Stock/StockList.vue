@@ -4,11 +4,6 @@
     components : {
       StockItem,
     },
-    data() {
-      return {
-
-      }
-    }
   }
 
 
@@ -23,7 +18,6 @@
       <h1 class="stockList__empty">Stock List Empty</h1>
     </template>
   </div>
-
 </template>
 
 <style lang="scss" scoped>

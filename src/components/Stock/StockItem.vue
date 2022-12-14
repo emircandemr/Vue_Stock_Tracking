@@ -67,33 +67,31 @@
         font-size: 14px;
         margin-top: 5px;
       }
-
     }
 
     &__count{
-      width: 70px;
+      width: 60px;
       height: 25px;
-      display: flex;
-      align-items: center;
       margin-right: 2rem;
       input{
         width: 100%;
         height: 100%;
-        text-align: center;
         border-radius: 8px;
         border: none;
         outline: none;
         font-weight: 800;
+        padding: 0 5px;
         color: #000;
       }
-
     }
 
     &__button{
-      height: 100%;
+      width: 150px;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
+      box-sizing: border-box;
+      gap: 0.5rem;
     }
 
   }

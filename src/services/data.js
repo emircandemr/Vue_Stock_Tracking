@@ -11,4 +11,10 @@ export const filter24hrTicker = async (symbol) => {
   return filteredData
 }
 
+export const refresh24hrTicker = async (symbol) => {
+  const result = await httpService()
+  const refreshedStock = result.data.filter((item) => item.symbol.toLocaleLowerCase() === symbol.toLocaleLowerCase() )
+  return refreshedStock
+}
+
 
