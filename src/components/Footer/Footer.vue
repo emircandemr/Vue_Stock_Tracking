@@ -31,11 +31,13 @@
         font-size: 1rem;
         font-weight: 600;
         color: #5293ee;
-        // background: linear-gradient(to right bottom, hsl(154, 97%, 62%), hsl(225, 97%, 62%));
-        // -webkit-background-clip: text;
-        // -webkit-text-fill-color: transparent;
         margin-right: 1rem;
     }
-
 }
+@media only screen and (min-device-width : 320px) and (max-device-width : 768px){
+    .footer{
+      display: none;
+    }
+  }
+
 </style>

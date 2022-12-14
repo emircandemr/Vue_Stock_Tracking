@@ -138,4 +138,35 @@ export default{
     }
   }
 
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1124px){
+    .stockChart{
+      &__btn{
+        width: 80%;
+        margin-top: 1rem;
+
+      }
+    }
+  }
+
+  @media only screen and (min-device-width : 568px) and (max-device-width : 768px){
+    .stockChart{
+      &__btn{
+        width: 100%;
+        margin-top: 1rem;
+      }
+    }
+  }
+
+  @media only screen and (min-device-width : 320px) and (max-device-width : 568px){
+    .stockChart{
+      &__btn{
+        width: 100%;
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+    }
+  }
+
 </style>

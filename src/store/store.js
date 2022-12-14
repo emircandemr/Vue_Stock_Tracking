@@ -56,6 +56,7 @@ export default new Vuex.Store({
       commit("loadingChangeStatu",true)
       state.selectedStock.forEach( async (item) => {
         const refreshedStock = await refresh24hrTicker(item.symbol)
+        console.log(refreshedStock)
         commit("updateStockQuantity",{stock:refreshedStock[0],quantity:item.quantity})
         commit("loadingChangeStatu",false)
       })

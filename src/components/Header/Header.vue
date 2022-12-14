@@ -63,4 +63,18 @@ import Footer from "../Footer/Footer.vue"
   }
 
 
+  @media only screen and (min-device-width : 320px) and (max-device-width : 768px){
+    .header{
+      padding: 0.8rem 1rem;
+
+      &__btn{
+        width: 100%;
+        gap: 1rem;
+
+    }
+  }
+
+  }
+
+
 </style>

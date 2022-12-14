@@ -13,7 +13,7 @@ export default{
 },
   data(){
     return{
-      searchInput : "",
+      searchInput : "ETH",
       searchedStock : [],
     }
   },
@@ -23,6 +23,7 @@ export default{
       this.$store.commit('loadingChangeStatu',false)
     },
     async searchStock(){
+      this.$store.commit('loadingChangeStatu',true)
       const result = await filter24hrTicker(this.searchInput)
       .then(res => {
         this.searchedStock = res.map( stock => {
@@ -47,7 +48,10 @@ export default{
       getQuantity(){
         return this.getSelectedStock.map(stock => stock.quantity)
       },
-    }
+    },
+  mounted(){
+    this.searchStock() // to show stocks on the screen when the modal is first opened
+  }
 }
 </script>
 
