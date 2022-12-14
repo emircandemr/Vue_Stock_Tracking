@@ -2,7 +2,7 @@
 import Header from "./components/Header/Header.vue"
 import StockList from "./components/Stock/StockList.vue"
 import StockModal from "./components/Stock/StockModal.vue"
-import StockPie from "./components/StockChart/StockPie.vue"
+import StockCharts from "./components/StockChart/StockCharts.vue";
 import Loading from "./components/Loader/Loading.vue";
 import { mapGetters } from "vuex";
 
@@ -11,7 +11,7 @@ export default{
     Header,
     StockList,
     StockModal,
-    StockPie,
+    StockCharts,
     Loading
   },
   data() {
@@ -41,7 +41,7 @@ export default{
         <StockList></StockList>
       </div>
       <div class="main__content--chart">
-        <StockPie></StockPie>
+        <StockCharts></StockCharts>
       </div>
     </div>
       <StockModal v-if="this.$store.state.isModalActive" ></StockModal>
@@ -102,7 +102,7 @@ export default{
 
       &--chart{
         width: 50%;
-        height: calc(100% - 100px - 2rem);
+        height: calc(100% - 100px);
         margin-top: 0.5rem;
         display: flex;
         align-items: center;
