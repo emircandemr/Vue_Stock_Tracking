@@ -80,7 +80,7 @@ import { mapGetters } from "vuex"
   }
 
 
-  @media only screen and (min-device-width : 320px) and (max-device-width : 768px){
+  @media screen and (max-width: 1024px){
     .header{
       padding: 0.8rem 1rem;
 

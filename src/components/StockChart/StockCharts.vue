@@ -138,7 +138,7 @@ export default{
     }
   }
 
-  @media only screen and (min-device-width : 768px) and (max-device-width : 1124px){
+  @media screen and (max-width: 1124px){
     .stockChart{
       &__btn{
         width: 80%;
@@ -148,7 +148,7 @@ export default{
     }
   }
 
-  @media only screen and (min-device-width : 568px) and (max-device-width : 768px){
+  @media screen and (max-width: 768px){
     .stockChart{
       &__btn{
         width: 100%;
@@ -157,7 +157,7 @@ export default{
     }
   }
 
-  @media only screen and (min-device-width : 320px) and (max-device-width : 568px){
+  @media screen and (max-width: 568px){
     .stockChart{
       &__btn{
         width: 100%;

@@ -96,7 +96,7 @@
 
   }
 
-  @media only screen and (min-device-width : 320px) and (max-device-width : 768px){
+  @media screen and (max-width: 768px){
     .stock{
       flex-direction: column;
       height: 150px;
@@ -116,7 +116,7 @@
       &__count{
         width: 50%;
         height: 30%;
-        margin-bottom: 1rem;
+        margin: 0 auto 1rem auto;
 
       }
 

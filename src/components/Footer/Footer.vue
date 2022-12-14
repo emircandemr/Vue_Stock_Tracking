@@ -57,7 +57,7 @@
     }
 
 }
-@media only screen and (min-device-width : 320px) and (max-device-width : 768px){
+@media screen and (max-width: 768px){
     .footer{
       display: none;
     }

@@ -104,5 +104,35 @@ import Button from "../Shared/Button.vue"
 
   }
 
+  @media screen and (max-width: 768px){
+    .stock{
+      flex-direction: column;
+      height: 150px;
+      padding: 1rem 0.5rem;
+      margin-bottom: 0.5rem;
+
+      &__name{
+        width: 100%;
+        height: 30%;
+        margin-bottom: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &__count{
+        width: 50%;
+        height: 30%;
+        margin: 0 auto 1rem auto;
+      }
+
+      &__button{
+        width: 100%;
+        height: 30%;
+      }
+    }
+  }
+
 
 </style>

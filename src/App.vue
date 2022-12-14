@@ -142,7 +142,7 @@ export default{
     }
   }
 
-  @media only screen and (min-device-width : 768px) and (max-device-width : 1124px) {
+  @media screen and (max-width: 1024px) {
     .main{
       &__content{
         flex-direction: column;
@@ -163,26 +163,6 @@ export default{
     }
   }
 
-  @media only screen and (min-device-width : 320px) and (max-device-width : 768px) {
-    .main{
-      &__content{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        &--stock{
-          width: 100%;
-          height: 50%;
-          border-right: none;
-          justify-content: center;
-          border-bottom: 1px solid #212121 ;
-        }
-        &--chart{
-          width: 100%;
-          height: 50%;
-        }
-      }
-    }
-  }
 
 
 

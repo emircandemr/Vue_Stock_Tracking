@@ -176,4 +176,36 @@ export default{
       }
   }
 
+
+
+  @media screen and (max-width: 1124px){
+    .modal{
+      &__content{
+        width: 60%;
+        height: 65%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px){
+    .modal{
+      &__content{
+        width: 80%;
+        height: 65%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 568px){
+
+    .modal{
+      &__content{
+        width: 90%;
+        height: 65%;
+      }
+    }
+
+  }
+
+
 </style>
