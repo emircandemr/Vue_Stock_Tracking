@@ -20,13 +20,17 @@
         required : false,
         default : "15px 32px"
       }
-
     },
   }
 </script>
 
 <template>
-    <button class="btn" type="button" @click="handler" :style='{"backgroundColor" : backgroundColor , "padding" : size}'> {{text}} </button>
+    <button class="btn"
+    type="button"
+    @click="handler"
+    :style='{"backgroundColor" : backgroundColor , "padding" : size}'>
+    {{text}}
+     </button>
 </template>
 
 

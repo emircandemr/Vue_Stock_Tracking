@@ -2,12 +2,14 @@
 import { filter24hrTicker } from '@/services/data';
 import { mapGetters } from 'vuex';
 import StockNew from './StockNew.vue';
-import StockSearched from './StockSearched.vue';
+import StockItem from './StockItem.vue';
+import Loading from '../Loader/Loading.vue';
 
 export default{
   components:{
     StockNew,
-    StockSearched
+    StockItem,
+    Loading
 },
   data(){
     return{
@@ -18,6 +20,7 @@ export default{
   methods: {
     closeModal(){
       this.$store.commit('modalChangeStatu')
+      this.$store.commit('loadingChangeStatu')
     },
     async searchStock(){
       const result = await filter24hrTicker(this.searchInput)
@@ -25,40 +28,52 @@ export default{
         this.searchedStock = res.map( stock => {
           return {
             ...stock ,
-            isAdded : this.isStockAvailable.includes(stock.symbol)
+            isAdded : this.getSelectedStockSymbol.includes(stock.symbol),
+            quantity : this.getQuantity[this.getSelectedStockSymbol.indexOf(stock.symbol)]
           }
         })
-        console.log(this.searchedStock)
+        this.$store.commit('loadingChangeStatu')
       })
+      console.log(this.searchedStock)
       // this.searchedStock = this.$store.state.stockList.filter(stock => stock.name.includes(this.searchInput))
     }
   },
   computed:{
-      ...mapGetters(['getSelectedStock']),
-      isStockAvailable(){
+      ...mapGetters({
+        getSelectedStock : 'getSelectedStock',
+        getLoadingStatu : 'getLoadingStatu'
+      }),
+      getSelectedStockSymbol(){
         return this.getSelectedStock.map(stock => stock.symbol)
-      }
+      },
+      getQuantity(){
+        return this.getSelectedStock.map(stock => stock.quantity)
+      },
     }
 }
-
 </script>
 
 <template>
   <div class="modal">
     <div class="modal__layer"></div>
     <div class="modal__content">
-      <div @click="closeModal" class="modal__content--icon">
-        <span class="material-symbols-outlined">
-         close
-        </span>
-      </div>
-      <div class="modal__content--search" >
-        <input v-model="searchInput" @input="searchStock"  type="text" placeholder="Search">
-      </div>
-      <div class="modal__content--stock" >
-        <!-- <StockNew v-for="(stock,index) in searchedStock" :key="index" :stock="stock" ></StockNew> -->
-        <StockSearched v-for="(stock,index) in searchedStock" :key="index" :stock="stock" ></StockSearched>
-      </div>
+        <div @click="closeModal" class="modal__content--icon">
+          <span class="material-symbols-outlined">
+           close
+          </span>
+        </div>
+        <div class="modal__content--search" >
+          <input v-model="searchInput" @input="searchStock"  type="text" placeholder="Search">
+        </div>
+        <div v-if="this.getLoadingStatu" class="modal__content--loading">
+          <Loading></Loading>
+        </div>
+        <div v-else class="modal__content--stock" >
+          <template v-for="stock in searchedStock" :stock="stock">
+            <StockItem v-if="stock.isAdded" :stock="stock"> </StockItem>
+            <StockNew v-else  :stock="stock"> </StockNew>
+          </template>
+        </div>
     </div>
   </div>
 
@@ -138,7 +153,12 @@ export default{
           overflow-y: auto;
         }
 
+        &--loading{
+          width: 100%;
+          height: 100%;
+          text-align: center;
 
+        }
       }
 
   }

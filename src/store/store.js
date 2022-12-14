@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     isModalActive : false,
     selectedStock : [],
+    isLoading : true,
   },
   getters: {
     getStocksSymbol(state){
@@ -18,8 +19,14 @@ export default new Vuex.Store({
     getSelectedStock(state){
       return state.selectedStock
     },
+    getLoadingStatu(state){
+      return state.isLoading
+    }
   },
   mutations: {
+    loadingChangeStatu(state){
+      state.isLoading = !state.isLoading
+    },
     modalChangeStatu(state){
       state.isModalActive = !state.isModalActive
     },
