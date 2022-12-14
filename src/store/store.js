@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import {refresh24hrTicker} from '../services/data'
+import {getStockFromLocal, setStocksToLocal, removeStocksFromLocal, updateStocksLocal} from '../services/local'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     isModalActive : false,
-    selectedStock : [],
+    selectedStock : getStockFromLocal() || [],
     isLoading : false,
   },
   getters: {
@@ -40,14 +41,17 @@ export default new Vuex.Store({
     updateStockQuantity(state,updatedStock){
       const findStock = state.selectedStock.find((item) => item.symbol === updatedStock.stock.symbol)
       findStock.quantity = updatedStock.quantity
+      updateStocksLocal(updatedStock)
     },
     removeStock(state,stock){
       state.selectedStock = state.selectedStock.filter((item) => item.symbol !== stock.symbol)
+      removeStocksFromLocal(stock)
     }
   },
   actions: {
-    addStock({commit},stock){
+    addStock({commit,state},stock){
       commit("selectedStock",stock)
+      setStocksToLocal(state.selectedStock)
     },
     quantityChange({commit},quantity){
       commit("setStockQuantity",quantity)

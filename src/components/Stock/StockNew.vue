@@ -1,6 +1,7 @@
 <script>
 import { mapGetters } from "vuex";
 import Button from "../Shared/Button.vue"
+
   export default{
     components:{
       Button

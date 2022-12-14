@@ -14,16 +14,28 @@ export default{
     StockCharts,
     Loading
   },
-  data() {
-      return {
-      }
-    },
+  data(){
+    return {
+      refreshInterval : null,
+    }
+  },
   computed:{
       ...mapGetters({
         getLoadingStatu : 'getLoadingStatu',
         getStocksSymbol : 'getStocksSymbol',
       }),
+    },
+  methods : {
+    refreshStocks20Min(){
+        this.$store.dispatch("refreshStock");
     }
+  },
+  created(){
+    this.refreshInterval = setInterval(this.refreshStocks20Min, 1200000);
+  },
+  destroyed(){
+    clearInterval(this.refreshInterval);
+  }
 }
 </script>
 

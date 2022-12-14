@@ -5,8 +5,6 @@
       StockItem,
     },
   }
-
-
 </script>
 
 <template>
