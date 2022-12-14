@@ -28,6 +28,7 @@ export default{
   methods : {
     refreshStocks20Min(){
         this.$store.dispatch("refreshStock");
+        console.log("refreshed")
     }
   },
   created(){
@@ -42,7 +43,8 @@ export default{
 
 <template>
   <div class="main">
-    <span class="main__title">eQuota Challenge</span>
+    <div class="main__title">
+      <img class="main__logo" src="./assets/equota.png" /></div>
     <div class="main__header">
       <Header></Header>
     </div>
@@ -80,10 +82,11 @@ export default{
     align-items: center;
 
     &__title{
+      width: 100%;
+      text-align: center;
       color: #5293ee;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       letter-spacing: 2px;
-      font-size: 2rem;
       font-weight: 600;
     }
 
@@ -122,7 +125,7 @@ export default{
         }
 
         &::-webkit-scrollbar-thumb {
-          background-color: #393e46;
+          background-color: #28d7be;
           outline: 1px solid #121212;
           border-radius: 20px;
       }

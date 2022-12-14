@@ -67,17 +67,18 @@ export default{
     }),
     stockData() {
         this.chartData = {
-        labels: this.stocksSymbol ,
+        labels: this.stocksSymbol.length > 0 ? this.stocksSymbol : ["No Data"] ,
         datasets: [
           {
-            data: this.stocksCount,
+            data: this.stocksCount.length > 0 ? this.stocksCount : [1] ,
             backgroundColor : [
-              'rgba(54, 162, 235, 0.5)',
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 49, 137, 0.5)',
-              'rgba(255, 205, 86, 0.5)',
-              'rgba(75, 192, 192, 0.5)',
-              'rgba(255, 159, 64, 0.2)'
+              'rgba(40, 215, 190,0.7)',
+              'rgba(10, 110, 95, 0.3)',
+              'rgba(95, 158, 149, 0.5)',
+              'rgba(33, 54, 51, 0.9)',
+              'rgba(126, 171, 165, 0.5)',
+              'rgba(11, 64, 51, 0.5)',
+              'rgba(2, 74, 56, 0.2)'
             ],
           }
         ]
@@ -101,7 +102,6 @@ export default{
           <StockBar v-if="buttons[1].active" :data="stockData" :options="options" ></StockBar>
           <StockDoughnut v-if="buttons[2].active" :data="stockData" :options="options"></StockDoughnut>
           <StockRadar v-if="buttons[3].active" :data="stockData" :options="options"></StockRadar>
-
         </div>
       </div>
     </div>

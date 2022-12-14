@@ -40,9 +40,8 @@
       },
       customBorder(){
         if(this.isClicked){
-          return "1px solid #5293ee"
+          return "1px solid #28d7be"
         }
-        return "1px solid #212121"
       }
     }
   }
@@ -66,6 +65,10 @@
     border-radius: 0.8rem;
     color: white;
     text-align: center;
-    // cursor: pointer;
+    border : 1px solid #212121;
+    &:hover{
+      border:1px solid #28d7be;
+    }
+
   }
 </style>

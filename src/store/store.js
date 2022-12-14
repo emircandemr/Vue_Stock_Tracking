@@ -13,10 +13,10 @@ export default new Vuex.Store({
   },
   getters: {
     getStocksSymbol(state){
-      return state.selectedStock?.map((item) => item.symbol) || ["No Stock Selected"]
+      return state.selectedStock?.map((item) => item.symbol)
     },
     getStocksCount(state){
-      return state.selectedStock?.map((item) => item.quantity) || [100]
+      return state.selectedStock?.map((item) => item.quantity)
     },
     getSelectedStock(state){
       return state.selectedStock

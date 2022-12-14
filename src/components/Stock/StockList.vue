@@ -13,7 +13,7 @@
       <StockItem v-for="stock in this.$store.state.selectedStock" :stock="stock" ></StockItem>
     </template>
     <template v-else>
-      <h1 class="stockList__empty">Stock List Empty</h1>
+      <h1 class="stockList__empty">Stock List is Empty</h1>
     </template>
   </div>
 </template>
@@ -29,7 +29,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #5293ee;
+      color: #28d7be;
       font-size: 2rem;
       font-weight: 600;
     }

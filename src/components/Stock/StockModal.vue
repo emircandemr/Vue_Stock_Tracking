@@ -163,7 +163,7 @@ export default{
           }
 
           &::-webkit-scrollbar-thumb {
-            background-color: #5293ee;
+            background-color: #28d7be;
             outline: 1px solid #121212;
             border-radius: 20px;
           }

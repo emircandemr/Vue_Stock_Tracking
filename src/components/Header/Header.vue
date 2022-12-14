@@ -2,6 +2,7 @@
 import Button from "../Shared/Button.vue"
 import { filter24hrTicker } from "../../services/data.js"
 import Footer from "../Footer/Footer.vue"
+import { mapGetters } from "vuex"
   export default {
     components :{
     Button,
@@ -17,7 +18,7 @@ import Footer from "../Footer/Footer.vue"
           {
             text : "Refresh",
             handler : this.refreshHandler,
-            // clickable : false
+            clickable : null
           }
         ]
       }
@@ -31,6 +32,22 @@ import Footer from "../Footer/Footer.vue"
         this.$store.dispatch('refreshStock')
       }
     },
+    computed:{
+      ...mapGetters({
+        selectedStock : "getSelectedStock",
+      }),
+      isStockEmpty(){
+        return this.selectedStock.length > 0
+      }
+    },
+    watch : {
+      isStockEmpty : {
+        handler(){
+          this.buttonData[1].clickable = this.isStockEmpty
+        },
+        immediate : true
+      }
+    }
   }
 </script>
 
