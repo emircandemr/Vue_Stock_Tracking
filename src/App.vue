@@ -20,7 +20,8 @@ export default{
     },
   computed:{
       ...mapGetters({
-        getLoadingStatu : 'getLoadingStatu'
+        getLoadingStatu : 'getLoadingStatu',
+        getStocksSymbol : 'getStocksSymbol',
       }),
     }
 }
@@ -97,6 +98,22 @@ export default{
         align-items: center;
         justify-content: start;
         border-right: 1px solid #212121 ;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+       &::-webkit-scrollbar-track {
+          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #393e46;
+          outline: 1px solid #121212;
+          border-radius: 20px;
+        }
+
       }
 
 

@@ -22,8 +22,9 @@ export default {
 </script>
 
 <template>
-  <Pie :data="data" :options="options" />
+    <Pie :data="data" :options="options" style="width:500px"/>
 </template>
 
 <style lang="scss" scoped>
+
 </style>

@@ -34,8 +34,6 @@ export default{
         })
         this.$store.commit('loadingChangeStatu',false)
       })
-      console.log(this.searchedStock)
-      // this.searchedStock = this.$store.state.stockList.filter(stock => stock.name.includes(this.searchInput))
     }
   },
   computed:{
@@ -151,16 +149,27 @@ export default{
           box-sizing: border-box;
           margin-top: 2rem;
           overflow-y: auto;
-        }
 
+          &::-webkit-scrollbar {
+            width: 6px;
+         }
+
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: #5293ee;
+            outline: 1px solid #121212;
+            border-radius: 20px;
+          }
+        }
         &--loading{
           width: 100%;
           height: 100%;
           text-align: center;
-
         }
       }
-
   }
 
 </style>

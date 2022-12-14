@@ -26,8 +26,12 @@
     height: 100%;
 
     &__empty{
+      width: 100%;
+      height: calc(100% - 100px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: #5293ee;
-      text-align: center;
       font-size: 2rem;
       font-weight: 600;
     }

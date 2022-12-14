@@ -41,7 +41,7 @@ export default {
 </script>
 
 <template>
-  <Doughnut :data="data" :options="options" />
+  <Doughnut :data="data" :options="options" style="width: 60%; height: 60%;"/>
 </template>
 
 <style lang="scss" scoped>

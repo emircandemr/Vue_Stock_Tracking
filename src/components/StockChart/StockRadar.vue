@@ -45,7 +45,7 @@ export default {
 </script>
 
 <template>
-  <PolarArea :data="data" :options="options" />
+  <PolarArea :data="data" :options="options" style="width: 60%; height: 60%;"/>
 </template>
 
 <style lang="scss" scoped>

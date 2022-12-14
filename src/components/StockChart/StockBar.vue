@@ -34,7 +34,7 @@ export default {
 </script>
 
 <template>
-  <Bar :data="data" :options="options" />
+  <Bar :data="data" :options="options" style="width: 60%; height: 60%;"/>
 </template>
 
 <style lang="scss" scoped>

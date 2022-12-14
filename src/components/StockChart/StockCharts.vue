@@ -41,7 +41,7 @@ export default{
         ],
         options: {
         responsive: true,
-        maintainAspectRatio: false
+        maintainAspectRatio: false,
       }
       }
     },
@@ -72,11 +72,11 @@ export default{
           {
             data: this.stocksCount,
             backgroundColor : [
+              'rgba(54, 162, 235, 0.5)',
               'rgba(255, 99, 132, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 206, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 49, 137, 0.5)',
+              'rgba(255, 205, 86, 0.5)',
+              'rgba(75, 192, 192, 0.5)',
               'rgba(255, 159, 64, 0.2)'
             ],
           }
@@ -92,14 +92,17 @@ export default{
 <template>
     <div class="stockChart">
       <div class="stockChart__btn">
-        <Button v-for="button in buttons" :handler="() => buttonHandler(button.id)" :text="button.text" >
+        <Button v-for="button in buttons" :handler="() => buttonHandler(button.id)" :text="button.text" :isClicked="button.active" >
         </Button>
       </div>
       <div class="stockChart__content">
-        <StockPie v-if="buttons[0].active" :data="stockData" :options="options" ></StockPie>
-        <StockBar v-if="buttons[1].active" :data="stockData" :options="options" ></StockBar>
-        <StockDoughnut v-if="buttons[2].active" :data="stockData" :options="options"></StockDoughnut>
-        <StockRadar v-if="buttons[3].active" :data="stockData" :options="options"></StockRadar>
+        <div>
+          <StockPie v-if="buttons[0].active" :data="stockData" :options="options" ></StockPie>
+          <StockBar v-if="buttons[1].active" :data="stockData" :options="options" ></StockBar>
+          <StockDoughnut v-if="buttons[2].active" :data="stockData" :options="options"></StockDoughnut>
+          <StockRadar v-if="buttons[3].active" :data="stockData" :options="options"></StockRadar>
+
+        </div>
       </div>
     </div>
 </template>
@@ -126,6 +129,12 @@ export default{
       display: flex;
       justify-content: center;
       align-items: center;
+
+      div{
+        width: 85%;
+        height: 85%;
+      }
+
     }
   }
 
