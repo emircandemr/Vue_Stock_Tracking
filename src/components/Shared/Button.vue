@@ -69,6 +69,5 @@
     &:hover{
       border:1px solid #28d7be;
     }
-
   }
 </style>

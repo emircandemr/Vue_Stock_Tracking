@@ -1,5 +1,5 @@
 <script>
-import { filter24hrTicker } from '@/services/data';
+import { filter24hrTicker } from '@/services/getStocksData';
 import { mapGetters } from 'vuex';
 import StockNew from './StockNew.vue';
 import StockItem from './StockItem.vue';
@@ -20,7 +20,6 @@ export default{
   methods: {
     closeModal(){
       this.$store.commit('modalChangeStatu')
-      this.$store.commit('loadingChangeStatu',false)
     },
     async searchStock(){
       this.$store.commit('loadingChangeStatu',true)
@@ -78,7 +77,6 @@ export default{
         </div>
     </div>
   </div>
-
 </template>
 
 <style lang="scss" scoped >
@@ -175,9 +173,6 @@ export default{
         }
       }
   }
-
-
-
   @media screen and (max-width: 1124px){
     .modal{
       &__content{
@@ -186,7 +181,6 @@ export default{
       }
     }
   }
-
   @media screen and (max-width: 768px){
     .modal{
       &__content{
@@ -195,17 +189,12 @@ export default{
       }
     }
   }
-
   @media screen and (max-width: 568px){
-
     .modal{
       &__content{
         width: 90%;
         height: 65%;
       }
     }
-
   }
-
-
 </style>

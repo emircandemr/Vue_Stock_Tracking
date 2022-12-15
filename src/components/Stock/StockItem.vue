@@ -1,5 +1,5 @@
 <script>
-  import Button from "../Shared/Button.vue"
+import Button from "../Shared/Button.vue"
   export default{
     components:{
       Button
@@ -12,12 +12,12 @@
     },
     methods : {
       updateStock(e){
-        this.$store.commit("updateStockQuantity", {stock : this.stock, quantity : e.target.value})
+        this.$store.commit("updateStock", {stock : this.stock, quantity : e.target.value})
       },
       removeStock(){
         this.$store.commit("removeStock", this.stock)
       }
-    }
+    },
   }
 </script>
 
@@ -39,7 +39,6 @@
 
 
 <style lang="scss" scoped>
-
   .stock{
     width: 95%;
     height: 70px;
@@ -62,13 +61,11 @@
       flex-grow: 1;
       align-items: flex-start;
       justify-content: center;
-
       span{
         font-size: 14px;
         margin-top: 5px;
       }
     }
-
     &__count{
       width: 60px;
       height: 25px;
@@ -84,7 +81,6 @@
         color: #000;
       }
     }
-
     &__button{
       width: 150px;
       display: flex;
@@ -93,7 +89,6 @@
       box-sizing: border-box;
       gap: 0.5rem;
     }
-
   }
 
   @media screen and (max-width: 768px){
@@ -102,7 +97,6 @@
       height: 150px;
       padding: 1rem 0.5rem;
       margin-bottom: 0.5rem;
-
       &__name{
         width: 100%;
         height: 30%;
@@ -112,20 +106,15 @@
         align-items: center;
         justify-content: center;
       }
-
       &__count{
         width: 50%;
         height: 30%;
         margin: 0 auto 1rem auto;
-
       }
-
       &__button{
         width: 100%;
         height: 30%;
       }
     }
   }
-
-
 </style>

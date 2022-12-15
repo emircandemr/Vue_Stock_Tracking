@@ -16,7 +16,7 @@
 <div align="center">
 <h3>✨ Live Version </h3>
 
-### [You can see the live version here.](https://vue-nuxt3-kanban-project.vercel.app)
+### [You can see the live version here.](https://vue2-equota-case.vercel.app)
 </div>
 
 <div align="center">

@@ -1,21 +1,23 @@
 <script>
-import Button from "../Shared/Button.vue"
-import { filter24hrTicker } from "../../services/data.js"
-import Footer from "../Footer/Footer.vue"
-import { mapGetters } from "vuex"
+  import Button from "../Shared/Button.vue"
+  import Footer from "../Footer/Footer.vue"
+  import { mapGetters } from "vuex"
+
   export default {
     components :{
     Button,
     Footer
-},
+    },
     data() {
       return {
         buttonData : [
           {
+            id : 1,
             text : "Add Stock",
             handler : this.modalChange,
           },
           {
+            id :2,
             text : "Refresh",
             handler : this.refreshHandler,
             clickable : null
@@ -26,7 +28,6 @@ import { mapGetters } from "vuex"
     methods:{
       modalChange(){
         this.$store.commit('modalChangeStatu')
-        this.$store.commit('loadingChangeStatu',true)
       },
       refreshHandler(){
         this.$store.dispatch('refreshStock')
@@ -54,7 +55,12 @@ import { mapGetters } from "vuex"
 <template>
   <div class="header">
     <div class="header__btn">
-      <Button v-for="button in buttonData" :text="button.text" :handler="button.handler" :clickable="button.clickable" ></Button>
+      <Button v-for="button in buttonData"
+      :key="button.id"
+      :text="button.text"
+      :handler="button.handler"
+      :clickable="button.clickable">
+      </Button>
     </div>
     <Footer></Footer>
   </div>
@@ -76,22 +82,15 @@ import { mapGetters } from "vuex"
       justify-content: space-between;
       align-items: center;
     }
-
   }
-
 
   @media screen and (max-width: 1024px){
     .header{
       padding: 0.8rem 1rem;
-
       &__btn{
         width: 100%;
         gap: 1rem;
-
     }
   }
-
-  }
-
-
+}
 </style>

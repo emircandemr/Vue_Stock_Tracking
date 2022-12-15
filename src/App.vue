@@ -23,12 +23,12 @@ export default{
       ...mapGetters({
         getLoadingStatu : 'getLoadingStatu',
         getStocksSymbol : 'getStocksSymbol',
+        getModalStatu : 'getModalStatu',
       }),
     },
   methods : {
     refreshStocks20Min(){
         this.$store.dispatch("refreshStock");
-        console.log("refreshed")
     }
   },
   created(){
@@ -59,7 +59,7 @@ export default{
         <StockCharts></StockCharts>
       </div>
     </div>
-      <StockModal v-if="this.$store.state.isModalActive" ></StockModal>
+      <StockModal v-if="this.getModalStatu" ></StockModal>
   </div>
 </template>
 
@@ -73,7 +73,6 @@ export default{
     background-color: #121212;
     box-sizing: border-box;
   }
-
   .main {
     width: 100%;
     height: 100vh;
@@ -128,8 +127,7 @@ export default{
           background-color: #28d7be;
           outline: 1px solid #121212;
           border-radius: 20px;
-      }
-      }
+      }}
       &--chart{
         width: 50%;
         height: calc(100% - 100px);
@@ -138,10 +136,8 @@ export default{
         align-items: center;
         justify-content: center;
       }
-
     }
   }
-
   @media screen and (max-width: 1024px) {
     .main{
       &__content{
@@ -162,10 +158,4 @@ export default{
       }
     }
   }
-
-
-
-
-
-
 </style>

@@ -56,7 +56,6 @@ export default{
 
             btn.active = false
           }
-          console.log(btn.active)
         })
       }
     },
@@ -85,15 +84,18 @@ export default{
       }
       return this.chartData
     }
-  },
-
+  }
 }
 </script>
 
 <template>
     <div class="stockChart">
       <div class="stockChart__btn">
-        <Button v-for="button in buttons" :handler="() => buttonHandler(button.id)" :text="button.text" :isClicked="button.active" >
+        <Button v-for="button in buttons"
+        :key="button.id"
+        :handler="() => buttonHandler(button.id)"
+        :text="button.text"
+        :isClicked="button.active" >
         </Button>
       </div>
       <div class="stockChart__content">
@@ -116,28 +118,23 @@ export default{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     &__btn{
       width: 60%;
       display: flex;
       gap: 1rem;
     }
-
     &__content{
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-
       div{
         width: 85%;
         height: 85%;
       }
-
     }
   }
-
   @media screen and (max-width: 1124px){
     .stockChart{
       &__btn{
@@ -147,7 +144,6 @@ export default{
       }
     }
   }
-
   @media screen and (max-width: 768px){
     .stockChart{
       &__btn{
@@ -156,7 +152,6 @@ export default{
       }
     }
   }
-
   @media screen and (max-width: 568px){
     .stockChart{
       &__btn{
@@ -168,5 +163,4 @@ export default{
       }
     }
   }
-
 </style>

@@ -1,7 +1,6 @@
 <script>
-import { mapGetters } from "vuex";
-import Button from "../Shared/Button.vue"
-
+  import { mapGetters } from "vuex";
+  import Button from "../Shared/Button.vue"
   export default{
     components:{
       Button
@@ -19,16 +18,18 @@ import Button from "../Shared/Button.vue"
     },
     methods: {
       addStock() {
-        this.$store.dispatch("addStock", {stock : this.stock , quantity : this.quantity});
+        this.$store.commit("setSelectedStock", {stock : this.stock , quantity : this.quantity});
       },
     },
     computed:{
+      ...mapGetters({
+        selectedStock : "getSelectedStock",
+      }),
       isAdded(){
-        return this.$store.state.selectedStock.map(stock => stock.symbol).includes(this.stock.symbol)
+        return this.selectedStock.map(stock => stock.symbol).includes(this.stock.symbol)
       }
     }
   }
-
 </script>
 
 <template>
@@ -61,7 +62,6 @@ import Button from "../Shared/Button.vue"
     border-radius: 1rem;
     color: white;
     background-color: #212121;
-
     &__name{
       width: 30%;
       height: 100%;
@@ -70,14 +70,11 @@ import Button from "../Shared/Button.vue"
       flex-grow: 1;
       align-items: flex-start;
       justify-content: center;
-
       span{
         font-size: 14px;
         margin-top: 5px;
       }
-
     }
-
     &__count{
       width: 60px;
       height: 25px;
@@ -92,18 +89,14 @@ import Button from "../Shared/Button.vue"
         padding: 0 5px;
         color: #000;
       }
-
     }
-
     &__button{
       width: 150px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-
   }
-
   @media screen and (max-width: 768px){
     .stock{
       flex-direction: column;
@@ -133,6 +126,4 @@ import Button from "../Shared/Button.vue"
       }
     }
   }
-
-
 </style>

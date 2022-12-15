@@ -1,16 +1,26 @@
 <script>
+  import { mapGetters } from "vuex";
   import StockItem from "./StockItem.vue"
   export default{
     components : {
       StockItem,
     },
+    computed : {
+      ...mapGetters({
+        selectedStock : "getSelectedStock",
+      })
+    }
   }
 </script>
 
 <template>
   <div class="stockList">
-    <template v-if="this.$store.state.selectedStock.length > 0" >
-      <StockItem v-for="stock in this.$store.state.selectedStock" :stock="stock" ></StockItem>
+    <template v-if="this.selectedStock.length > 0" >
+        <StockItem
+        v-for="(stock,index) in this.selectedStock"
+        :stock="stock"
+        :key="index">
+      </StockItem>
     </template>
     <template v-else>
       <h1 class="stockList__empty">Stock List is Empty</h1>
